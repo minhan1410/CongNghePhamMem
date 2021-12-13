@@ -1,32 +1,27 @@
 1. Trình bày thuật toán tìm các nghiệm thực của phương trình.
 ```java
 public static double[] PTBac2(double a, double b, double c) {
-        if (a == 0) {
-            if (b == 0 && c != 0) {
-                return null;
-            }
-            if (c == 0) {
-                return new double[] { 0 };
-            }
-            return new double[] { -c / b };
-        }
-
-        if (a + b + c == 0) {
-            return new double[] { 1, c / a };
-        } else if (a - b + c == 0) {
-            return new double[] { -1, -c / a };
-        }
-
-        double delta = b * b - 4 * a * c;
-        if (delta < 0)
+    if (a == 0) {
+        if (b == 0 && c != 0)
             return null;
-        else if (delta == 0) {
-            return new double[] { -b / (2 * a), -b / (2 * a) };
-        }
-
-        return new double[] { (-b + Math.sqrt(delta)) / (2 * a), (-b - Math.sqrt(delta)) / (2 * a) };
+        return c == 0 ? new double[] { 0 } : new double[] { -c / b };
     }
-````
+
+    if (a + b + c == 0) {
+        return new double[] { 1, c / a };
+    } else if (a - b + c == 0) {
+        return new double[] { -1, -c / a };
+    }
+
+    double delta = b * b - 4 * a * c;
+    if (delta < 0)
+        return null;
+
+    return delta == 0 ? new double[] { -b / (2 * a), -b / (2 * a) }
+            : new double[] {
+                    (-b + Math.sqrt(delta)) / (2 * a), (-b - Math.sqrt(delta)) / (2 * a) };
+}
+```
 
 2. Trong thuật toán vừa trình bày có sử dụng một hàm hay chương trình con nào khác không ? 
 
