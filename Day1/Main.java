@@ -3,8 +3,8 @@ import java.util.Arrays;
 public class Main {
     public static double[] PTBac2(double a, double b, double c) {
         if (a == 0) {
-            if (b == 0 && c != 0)
-                return null;
+            if (b == 0)
+                return c == 0 ? new double[] { Double.POSITIVE_INFINITY } : null;
             return c == 0 ? new double[] { 0 } : new double[] { -c / b };
         }
 
@@ -24,6 +24,8 @@ public class Main {
     }
 
     public static void main(String[] args) {
+        System.out.println(Arrays.toString(PTBac2(0, 0, 0)));
+        System.out.println(Arrays.toString(PTBac2(0, 5, 0)));
         System.out.println(Arrays.toString(PTBac2(0, 0, 4)));
         System.out.println(Arrays.toString(PTBac2(2, -7, 3)));
         System.out.println(Arrays.toString(PTBac2(3, 2, 5)));
